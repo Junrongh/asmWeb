@@ -1,0 +1,52 @@
+{% extends "layout.html" %} {% block body %}
+<div class="container">
+    <div class="single">
+        <a href="/micrographs/{{ dic['Image_Code'] }}">
+    <img class="single"
+    src="/static/Micrographs/{{dic['main']}}/{{ dic['Image_Code'] }}_h.png"
+    alt={{ dic['ori_image'] }}
+    title={{ dic['Image_Code'] }}
+    >
+    </a>
+    </div>
+    <div class="about">
+        <h2>Micrograph {{ dic['Image_Code'] }}</h2>
+        Record Name <b>{{ dic['Record_Name'] }}</b>
+        <br>
+        (Short Name: <b>{{ dic['Short_Name'] }}</b>)
+        <br>
+        Material Name: <b>{{ dic['Material_name'] }}</b>
+        <br>
+        UNS Number: <b>{{ dic['UNS_number'] }}</b>
+        <br>
+        Composition: <b>{{ dic['Composition'] }}</b>
+        <br>
+        Condition: <b>{{ dic['Condition'] }}</b>
+        <br>
+        Condition details: <b>{{ dic['Condition_details'] }}</b>
+        <br>
+        Properties: <b>{{ dic['Properties'] }}</b>
+        <br>
+        Description: <b>{{ dic['Description'] }}</b>
+        <br>
+        Photo method: <b>{{ dic['Photo_method'] }}</b>
+        <br>
+        Photo details: <b>{{ dic['Photo_details'] }}</b>
+        <br>
+        Etchant: <b>{{ dic['Etchant'] }}</b>
+        <br>
+        Original magnification: <b>{{ dic['Original_magnification'] }}</b>
+        <br>
+        Keywords: <b>{{ dic['Keywords'] }}</b>
+        <br>
+        Submit date: <b>{{ dic['Submit_date'] }}</b>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <a href="/findsimilar/{{ dic['Image_Code'] }}">Find similar micrographs</a>
+        <br>
+    </div>
+</div>
+{% endblock %}

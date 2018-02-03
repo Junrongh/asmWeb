@@ -1,0 +1,57 @@
+{% extends "layout.html" %} {% block body %}
+<div class="container">
+    <div class="single">
+        <a href="/micrographs/{{ dic['Image_Code'] }}">
+      <img class="single"
+        src="/static/Micrographs/{{dic['main']}}/{{ dic['Image_Code'] }}_h.png"
+        alt={{ dic['ori_image'] }}
+        title={{ dic['Image_Code'] }}
+        >
+    </a>
+    </div>
+    <div class="about">
+        <h2>Micrograph {{ dic['Image_Code'] }}</h2> Record Name <b>{{ dic['Record_Name'] }}</b>
+        <br> (Short Name: <b>{{ dic['Short_Name'] }}</b>)
+        <br> Material Name: <b>{{ dic['Material_name'] }}</b>
+        <br> UNS Number: <b>{{ dic['UNS_number'] }}</b>
+        <br> Composition: <b>{{ dic['Composition'] }}</b>
+        <br> Condition: <b>{{ dic['Condition'] }}</b>
+        <br> Condition details: <b>{{ dic['Condition_details'] }}</b>
+        <br> Properties: <b>{{ dic['Properties'] }}</b>
+        <br> Description: <b>{{ dic['Description'] }}</b>
+        <br> Photo method: <b>{{ dic['Photo_method'] }}</b>
+        <br> Photo details: <b>{{ dic['Photo_details'] }}</b>
+        <br> Etchant: <b>{{ dic['Etchant'] }}</b>
+        <br> Original magnification: <b>{{ dic['Original_magnification'] }}</b>
+        <br> Keywords: <b>{{ dic['Keywords'] }}</b>
+        <br> Submit date: <b>{{ dic['Submit_date'] }}</b>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+    </div>
+    <br>
+    <h2> These micrographs are similar to micrograph {{ dic['Image_Code'] }}: </h2>
+    <br> {% for entry in similar %}
+    <div class="entry">
+        <a href="/micrographs/{{ entry.Image_Code }}">
+      <img src="/static/Micrographs/{{ entry.main }}/{{ entry.Image_Code }}_h.png" height="300px"
+           alt={{ entry.Image_Code }}
+           title="find micrographs like #{{ dic['Image_Code'] }}" >
+    </a>
+        <br>
+        <a href="/micrographs/{{ entry.Image_Code }}" class="titleLink">
+      {{ loop.index }}: Micrograph {{ entry.Image_Code }}
+    </a>
+        <!--         <br>
+        <small><em>{{ entry.Etchant }}</em> </small> -->
+        <br>
+        <a href="/findsimilar/{{ entry.Image_Code }}">find similar</a>
+        <br>
+        <a href="/micrographs/{{ entry.Image_Code }}">details</a>
+    </div>
+    {% else %}
+    <em>Unbelievable.  No entries here so far</em> {% endfor %}
+</div>
+{% endblock %}

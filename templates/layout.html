@@ -1,0 +1,39 @@
+<!doctype html>
+
+<head>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}"> {% block head %} {% endblock %}
+</head>
+<title>ASMDB microstructure explorer</title>
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+<div class=page>
+    <h1><a class="titleLink" href="/">ASM microstructure explorer</a></h1> {% for message in get_flashed_messages() %}
+    <div class=flash>{{ message }}</div>
+    {% endfor %} {% block body %}{% endblock %}
+</div>
+<section>
+    <div class="footer">
+        <div class="col-left">
+            <a href="{{ url_for('download', filename='static/info/poster.pdf') }}">Writeup</a>
+            <br>
+            <a href="/entries/1">Explore the Micrograph Dataset</a>
+            <br><a href="/visualize">Interactive Data Visualization</a>
+            <br>
+            <br>
+            Download the Full Dataset
+            <br>
+            <a href="https://github.com/Junrongh/asmDataset">Code</a>
+            <br>
+            <a href="https://github.com/Junrongh/asmWeb">Web App</a>
+        </div>
+        <div class="col-right">
+            &mdash; <a href="https://www.linkedin.com/in/junrongh">Junrong Huang</a>
+            <br> &mdash; <a href="https://andrew.cmu.edu/user/bdecost"> Brian DeCost</a>
+            <br> &mdash; <a href="https://www.cmu.edu/engineering/materials/people/faculty/bios/holm.html">Prof. Elizabeth A. Holm</a>
+            <br> Microscopy by ASM
+            <br>
+            <br> Materials Science
+            <br> Carnegie Mellon University
+<!--             <br> Citation details and resulting publications -->
+        </div>
+    </div>
+</section>

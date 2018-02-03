@@ -1,0 +1,54 @@
+{% extends "layout.html" %} {% block body %}
+<div class="container">
+	<div class="paginate">
+		{% if pg.has_prev %}
+		<a href="{{ url_for('.entries', page=pg.prev_num) }}">
+			&lt;&lt; Previous
+		</a> {% else %} &lt;&lt; Previous {% endif %} |
+		<a href="/visualize">
+			data visualization
+		</a> | {% if pg.has_next %}
+		<a href="{{ url_for('.entries', page=pg.next_num) }}">
+			More &gt;&gt;
+		</a> {% else %} More &gt;&gt; {% endif %}
+	</div>
+	<br> {% for entry in entries %}
+	<div class="entry">
+		<a href="/micrographs/{{ entry.Image_Code }}">
+			<img src="/static/Micrographs/{{entry.main}}/{{ entry.Image_Code }}_h.png"
+				 alt={{ entry.ori_image }}
+				 title={{ entry.Image_Code }}
+				 height="200px"/>
+		</a>
+		<br>
+		<a href="/micrographs/{{ entry.Image_Code }}" class="titleLink">
+			Micrograph {{ entry.Image_Code }}
+		</a>
+		<br>
+		<a href="/findsimilar/{{ entry.Image_Code }}">
+			Find similar
+		</a>
+		<br>
+		<a href="/micrographs/{{ entry.Image_Code }}">
+			Details
+		</a>
+	</div>
+	{% else %}
+	<em>Unbelievable.  No entries here so far</em> {% endfor %}
+	<br>
+	<div class="paginate">
+		{% if pg.has_prev %}
+		<a href="{{ url_for('.entries', page=pg.prev_num) }}">
+			&lt;&lt; Previous
+		</a> {% else %} &lt;&lt; Previous {% endif %} |
+		<a href="/visualize">
+			data visualization
+		</a> | {% if pg.has_next %}
+		<a href="{{ url_for('.entries', page=pg.next_num) }}">
+			More &gt;&gt;
+		</a> {% else %} More &gt;&gt; {% endif %}
+	</div>
+</div>
+{% endblock %}
+
+

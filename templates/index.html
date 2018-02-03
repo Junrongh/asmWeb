@@ -1,0 +1,41 @@
+{% extends "layout.html" %} {% block body %}
+<div class="container">
+    <div class="Page" align="center">
+        <div class="container" align="right">
+            <h2><br>
+			<form method = "post" action = "/search">
+                <input type="text" name="keywords" placeholder="Enter Key Words">
+				<input type = "submit" value="Search" id="submit"/>
+			</form>
+			</h2>
+        </div>
+    </div>
+    <div class="box">
+        <a href="/entries/1">
+			<img src="static/icons/Explore.png" height="300px" />
+		</a>
+        <br>
+        <a href="/entries/1" class="boxLink">
+			Explore the Dataset
+		</a>
+    </div>
+    <div class="box">
+        <a href="/visualize">
+			<img src="static/icons/ntsne.png" height="300px" />
+		</a>
+        <br>
+        <a href="/visualize" class="boxLink">
+			Interactive t-SNE Visulization
+		</a>
+    </div>
+    <div class="box">
+        <a href="/imagesearch">
+			<img src="/static/icons/inconstruction.jpg" height="300px"/>
+		</a>
+        <br>
+        <a href="/" class="boxLink">
+			Image Search(In Construction)
+		</a>
+    </div>
+</div>
+{% endblock %}

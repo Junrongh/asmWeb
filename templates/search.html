@@ -1,0 +1,71 @@
+{% extends "layout.html" %} {% block body %}
+<div class="container">
+	<div style="position:absolute">
+		Searching results for <em>"{{key}}"</em> : In total {{ n }} results
+	</div>
+	<div align=right>
+		{% if pg.has_prev %}
+		<a href="/search/keywords={{key}}/page={{pg.prev_num}}">
+			&lt;&lt; Previous Results
+		</a> {% else %} &lt;&lt; Previous Results {% endif %} |
+		<a href="/visualize">
+			data visualization
+		</a> | {% if pg.has_next %}
+		<a href="/search/keywords={{key}}/page={{pg.next_num}}">
+			More Results &gt;&gt;
+		</a> {% else %} More Results &gt;&gt; {% endif %}
+	</div>
+	<br> 
+	{% for entry in entries %}
+	<div class="search">
+		
+		<a href="/micrographs/{{ entry.Image_Code }}">
+			<img src="/static/Micrographs/{{entry.main}}/{{ entry.Image_Code }}_h.png"
+				 alt={{ entry.ori_image }}
+				 title={{ entry.Image_Code }}
+				 width="240px" height="240px"/>
+		</a>
+	</div>
+	<div class="search_info">
+		<a href="/micrographs/{{ entry.Image_Code }}" class="titleLink">
+			•  Micrograph {{ entry.Image_Code }}
+		</a>
+		<p>
+		Record Name <em>{{ entry['Record_Name'] }}; </em>
+		(Short Name: <em>{{ entry['Short_Name'] }}); </em>
+		Material Name: <em>{{ entry['Material_name'] }}; </em>
+		UNS Number: <em>{{ entry['UNS_number'] }}; </em>
+		Composition: <em>{{ entry['Composition'] }}; </em>
+		Condition: <em>{{ entry['Condition'] }}; </em>
+		Condition <em>details: {{ entry['Condition_details'] }}; </em>
+		Properties: <em>{{ entry['Properties'] }}; </em>
+		Description: <em>{{ entry['Description'] }}; </em>
+		Photo method: <em>{{ entry['Photo_method'] }}; </em>
+		Photo details: <em>{{ entry['Photo_details'] }}; </em>
+		Etchant: <em>{{ entry['Etchant'] }}; </em>
+		Original magnification: <em>{{ entry['Original_magnification'] }}; </em>
+		Keywords: <em>{{ entry['Keywords'] }}; </em>
+		Submit date: <em>{{ entry['Submit_date'] }}</em>
+		</p>
+	</div>
+	{% else %}
+	Unbelievable.  No entries here so far</em> {% endfor %}
+	<br>
+	<div align=right>
+		{% if pg.has_prev %}
+		<a href="/search/keywords={{key}}/page={{pg.prev_num}}">
+			&lt;&lt; Previous Results
+		</a> {% else %} &lt;&lt; Previous Results {% endif %} |
+		<a href="/visualize">
+			data visualization
+		</a> | {% if pg.has_next %}
+		<a href="/search/keywords={{key}}/page={{pg.next_num}}">
+			More Results &gt;&gt;
+		</a> {% else %} More Results &gt;&gt; {% endif %}
+	</div>
+
+</div>
+
+{% endblock %}
+
+
